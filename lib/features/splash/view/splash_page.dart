@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:housekeeping_pro/configuration/assets/app_images.dart';
-import 'package:housekeeping_pro/features/%20dashboard/view/dashboard_page.dart';
 import 'package:housekeeping_pro/features/authenticaiton/view/login_page.dart';
+import 'package:housekeeping_pro/features/dashboard/view/dashboard_page.dart';
 import 'package:housekeeping_pro/storage/local_storage.dart';
 import 'package:housekeeping_pro/storage/local_storage_constants.dart';
 
@@ -15,20 +15,21 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      final loginStatus =
-          LocalStorage().getBool(key: LocalStorageConstants.isUserLoggedIn);
-      if (!loginStatus) {
+    Future.microtask(() async {
+      final loginStatus = await LocalStorage.getInstance()
+          .getBool(key: LocalStorageConstants.isUserLoggedIn);
+
+      if (loginStatus) {
         Future.delayed(const Duration(seconds: 2), () async {
           if (mounted) {
-            Navigator.pushReplacementNamed(context, LoginPage.route);
+            Navigator.pushReplacementNamed(context, DashboardPage.route);
           }
         });
         return;
       }
       Future.delayed(const Duration(seconds: 2), () async {
         if (mounted) {
-          Navigator.pushReplacementNamed(context, DashboardPage.route);
+          Navigator.pushReplacementNamed(context, LoginPage.route);
         }
       });
       return;

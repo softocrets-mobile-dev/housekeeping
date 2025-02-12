@@ -2,52 +2,73 @@ import 'package:housekeeping_pro/storage/local_storage_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LocalStorage {
-  SharedPreferences? _sharedPreference;
   LocalStorageConstants constants = LocalStorageConstants();
 
-  static final LocalStorage _instance = LocalStorage._internal();
+  LocalStorage._internal();
 
-  LocalStorage._internal() {
-    if (_sharedPreference == null) {
-      _initPrefs();
-    }
+  static Future<SharedPreferences>? _sharedPreference;
+
+  static final LocalStorage _singleton = LocalStorage._internal();
+
+  static LocalStorage getInstance() {
+    _sharedPreference ??= SharedPreferences.getInstance();
+    return _singleton;
   }
 
-  factory LocalStorage() {
-    return _instance;
+  ///Get String value
+  Future<String> getString({
+    required String key,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      return preference.getString(key) ?? '';
+    });
   }
 
-  Future<void> _initPrefs() async {
-    _sharedPreference = await SharedPreferences.getInstance();
+  ///Get Boolean value
+  Future<bool> getBool({
+    required String key,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      return preference.getBool(key) ?? false;
+    });
   }
 
-  ///Save boolean value
-  Future<void> saveBool(String key, bool value) async {
-    await _sharedPreference?.setBool(key, value);
+  ///Get Int value
+  Future<int> getInt({
+    required String key,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      return preference.getInt(key) ?? 0;
+    });
   }
 
-  ///Get boolean value
-  bool getBool({required String key}) {
-    return _sharedPreference?.getBool(key) ?? false;
+  /// Save String Value
+  Future<void> saveString({
+    required String key,
+    String value = '',
+  }) async {
+    return _sharedPreference!.then((preference) {
+      preference.setString(key, value);
+    });
   }
 
-  ///Save boolean value
-  Future<void> saveString(String key, String value) async {
-    await _sharedPreference?.setString(key, value);
+  /// Save Boolean Value
+  Future<void> saveBoolean({
+    required String key,
+    bool value = false,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      preference.setBool(key, value);
+    });
   }
 
-  ///Get boolean value
-  String getString({required String key}) {
-    return _sharedPreference?.getString(key) ?? "";
-  }
-
-  ///Save boolean value
-  Future<void> saveInt(String key, int value) async {
-    await _sharedPreference?.setInt(key, value);
-  }
-
-  ///Get boolean value
-  int getInt({required String key}) {
-    return _sharedPreference?.getInt(key) ?? 0;
+  /// Save int Value
+  Future<void> saveInt({
+    required String key,
+    int value = 0,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      preference.setInt(key, value);
+    });
   }
 }
