@@ -71,4 +71,11 @@ class LocalStorage {
       preference.setInt(key, value);
     });
   }
+
+  /// Clear all data
+  Future<void> clearAll() async {
+    return _sharedPreference!.then((preference) {
+      preference.clear();
+    });
+  }
 }
