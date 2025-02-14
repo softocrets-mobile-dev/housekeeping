@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:housekeeping_pro/configuration/app_colors/app_colors.dart';
-import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
 
 class AppTheme {
   static _border([
@@ -12,7 +11,7 @@ class AppTheme {
           width: 1.5,
         ),
         borderRadius: BorderRadius.circular(
-          10.r,
+          10,
         ),
       );
   static final darkThemeMode = ThemeData.dark().copyWith(
@@ -22,37 +21,38 @@ class AppTheme {
       elevation: 0,
       surfaceTintColor: AppColors.transparentColor,
       iconTheme: IconThemeData(
-        color: AppColors.whiteColor,
-        size: 24.r,
+        color: AppColors.blackColor,
+        size: 24,
       ),
       titleTextStyle: TextStyle(
         color: AppColors.blackColor,
-        fontSize: 24.sp,
+        fontSize: 20,
         fontWeight: FontWeight.bold,
       ),
     ),
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: EdgeInsets.all(15.r),
+      contentPadding: EdgeInsets.all(15),
       enabledBorder: _border(),
       focusedBorder: _border(AppColors.blackColor),
       errorBorder: _border(AppColors.blackColor),
       focusedErrorBorder: _border(AppColors.blackColor),
+      suffixIconColor: AppColors.blackColor,
       hintStyle: TextStyle(
         color: AppColors.greyColor,
-        fontSize: 16.sp,
+        fontSize: 16,
       ),
       errorStyle: TextStyle(
         color: AppColors.redColor,
-        fontSize: 16.sp,
+        fontSize: 16,
       ),
       helperStyle: TextStyle(
         color: AppColors.blackColor,
-        fontSize: 16.sp,
+        fontSize: 16,
       ),
     ),
     iconTheme: IconThemeData(
       color: AppColors.whiteColor,
-      size: 24.r,
+      size: 24,
     ),
     dialogTheme: DialogTheme(
       shape: RoundedRectangleBorder(
@@ -60,19 +60,19 @@ class AppTheme {
       ),
       backgroundColor: AppColors.whiteColor,
       titleTextStyle: TextStyle(
-        fontSize: 24.sp,
+        fontSize: 24,
         fontWeight: FontWeight.bold,
         color: AppColors.blackColor,
       ),
       contentTextStyle: TextStyle(
-        fontSize: 12.sp,
+        fontSize: 12,
         fontWeight: FontWeight.bold,
         color: AppColors.blackColor,
       ),
     ),
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.whiteColor,
-      linearMinHeight: 10.r,
+      linearMinHeight: 10,
     ),
   );
 }
