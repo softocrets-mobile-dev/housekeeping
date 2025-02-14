@@ -24,9 +24,11 @@ class NetworkBaseHelper {
 
   //Api Header
   Future<Map<String, String>> getApiHeaders() async {
-    final storage = LocalStorage();
-    final authToken = storage.getString(key: LocalStorageConstants.authToken);
-    final tenantId = storage.getString(key: LocalStorageConstants.tenantId);
+    final storage = LocalStorage.getInstance();
+    final authToken =
+        await storage.getString(key: LocalStorageConstants.authToken);
+    final tenantId =
+        await storage.getString(key: LocalStorageConstants.tenantId);
     final map = {
       'Content-Type': 'application/json; charset=UTF-8',
       'accept': 'application/json',
@@ -70,8 +72,17 @@ class NetworkBaseHelper {
     if (await NetworkConnectivity.getInstance().checkConnection()) {
       try {
         final response = await apiResponse.timeout(const Duration(seconds: 60));
+        if (response.statusCode == 200 && response.body.isEmpty) {
+          return NetworkResponse.success(
+            null,
+            statusCode: response.statusCode,
+          );
+        }
         final formattedResponse = _returnResponse(response);
-        return NetworkResponse.success(formattedResponse);
+        return NetworkResponse.success(
+          formattedResponse,
+          statusCode: response.statusCode,
+        );
       } catch (e) {
         return NetworkResponse.error(e.toString());
       }

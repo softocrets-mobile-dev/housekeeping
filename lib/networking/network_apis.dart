@@ -12,5 +12,8 @@ class NetworkApis {
   static String baseUrl = Env.baseUrl;
 
   static const String login = "/app/auth/login";
-  static const String updatePassword = "app/auth/updatePassword";
+  static const String updatePassword = "/app/auth/updatePassword";
+
+  //Temp fix of Password Encryption
+  static const String encryptionPassword = "/app/unAuth/encrypt";
 }
