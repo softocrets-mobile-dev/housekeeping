@@ -29,6 +29,9 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        toolbarHeight: 0,
+      ),
       body: BlocConsumer<AuthenticationBloc, AuthenticationState>(
         listener: (context, state) {
           if (state.loginStatus == AuthStatus.success) {
@@ -48,74 +51,93 @@ class _LoginPageState extends State<LoginPage> {
             isLoading: state.loginStatus == AuthStatus.loading ||
                 state.encryptStatus == AuthStatus.loading,
             child: Center(
-              child: Container(
-                margin: EdgeInsets.symmetric(horizontal: 20.w),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20.r),
-                  color: Colors.white,
-                ),
-                padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      TextWidget(
-                        text: AppStrings.email,
-                        fontSize: 16.sp,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      TextInputField(
-                        controller: emailController,
-                        validator: FormValidators().validateEmail,
-                        hintText: AppStrings.email,
-                      ),
-                      TextWidget(
-                        text: AppStrings.password,
-                        fontSize: 16.sp,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      TextInputField(
-                        controller: passwordController,
-                        obscureText: true,
-                        validator: FormValidators().validatePassword,
-                        hintText: AppStrings.password,
-                      ),
-                      TextWidget(
-                        text: AppStrings.hotelName,
-                        fontSize: 16.sp,
-                      ),
-                      SizedBox(
-                        height: 5.h,
-                      ),
-                      TextInputField(
-                        controller: hotelNameController,
-                        hintText: AppStrings.hotelName,
-                        validator: FormValidators().validateHotelName,
-                      ),
-                      Button(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            context.read<AuthenticationBloc>().add(
-                                  LoginEvent(
-                                    email: emailController.text,
-                                    password: passwordController.text,
-                                    hotelName: hotelNameController.text,
-                                  ),
-                                );
-                          }
-                        },
-                        buttonLabel: AppStrings.login,
-                      ),
-                    ],
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: EdgeInsets.only(left: 20.w),
+                    child: TextWidget(
+                      text: AppStrings.login,
+                      color: Colors.white,
+                      fontSize: 36.sp,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
+                  Container(
+                    margin:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20.r),
+                      color: Colors.white,
+                    ),
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 20.w, vertical: 30.h),
+                    child: SingleChildScrollView(
+                      child: Form(
+                        key: _formKey,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            TextWidget(
+                              text: AppStrings.email,
+                              fontSize: 16.sp,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            TextInputField(
+                              controller: emailController,
+                              validator: FormValidators().validateEmail,
+                              hintText: AppStrings.email,
+                            ),
+                            TextWidget(
+                              text: AppStrings.password,
+                              fontSize: 16.sp,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            TextInputField(
+                              controller: passwordController,
+                              obscureText: true,
+                              validator: FormValidators().validatePassword,
+                              hintText: AppStrings.password,
+                            ),
+                            TextWidget(
+                              text: AppStrings.hotelName,
+                              fontSize: 16.sp,
+                            ),
+                            SizedBox(
+                              height: 5.h,
+                            ),
+                            TextInputField(
+                              controller: hotelNameController,
+                              hintText: AppStrings.hotelName,
+                              validator: FormValidators().validateHotelName,
+                            ),
+                            Button(
+                              onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  context.read<AuthenticationBloc>().add(
+                                        LoginEvent(
+                                          email: emailController.text,
+                                          password: passwordController.text,
+                                          hotelName: hotelNameController.text,
+                                        ),
+                                      );
+                                }
+                              },
+                              buttonLabel: AppStrings.login,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
           );
