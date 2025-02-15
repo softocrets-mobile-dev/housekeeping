@@ -4,6 +4,7 @@ import 'package:housekeeping_pro/common/constants/app_messages.dart';
 import 'package:housekeeping_pro/common/constants/app_strings.dart';
 import 'package:housekeeping_pro/common/toast_message/toast_message.dart';
 import 'package:housekeeping_pro/common/validators/form_validators.dart';
+import 'package:housekeeping_pro/common/widgets/app_logo_view.dart';
 import 'package:housekeeping_pro/common/widgets/button.dart';
 import 'package:housekeeping_pro/common/widgets/state_loader_view.dart';
 import 'package:housekeeping_pro/common/widgets/text_input_field.dart';
@@ -76,22 +77,31 @@ class _LoginPageState extends State<LoginPage> {
           return StateLoaderView(
             isLoading: state.loginStatus == AuthStatus.loading ||
                 state.encryptStatus == AuthStatus.loading,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50.w),
-                    child: TextWidget(
-                      text: AppMessages.loginScreenMessage,
-                      textAlign: TextAlign.center,
-                      fontSize: 18.sp,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 100.h,
+                  ),
+                  AppLogoView(),
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 55.w),
+                      child: TextWidget(
+                        text: AppMessages.loginScreenMessage,
+                        textAlign: TextAlign.center,
+                        fontSize: 16.sp,
+                      ),
                     ),
                   ),
-                ),
-                SingleChildScrollView(
-                  child: Container(
+                  SizedBox(
+                    height: 20.h,
+                  ),
+                  Container(
                     padding: EdgeInsets.symmetric(horizontal: 25.w),
                     margin: EdgeInsets.only(top: 40.h),
                     child: Form(
@@ -186,8 +196,8 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },

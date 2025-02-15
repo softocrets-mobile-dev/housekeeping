@@ -61,13 +61,12 @@ class _DashboardPageState extends State<DashboardPage> {
               },
             ),
           ),*/
-            backgroundColor: Colors.white,
+
             body: Container(
               padding: EdgeInsets.symmetric(
                 horizontal: 15.w,
               ),
               width: double.infinity,
-              decoration: BoxDecoration(color: Colors.black),
               child: Column(
                 children: [],
               ),

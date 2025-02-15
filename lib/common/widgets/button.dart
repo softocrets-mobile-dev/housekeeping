@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
 
-import '../../configuration/app_colors/app_colors.dart';
-
 class Button extends StatelessWidget {
   const Button({
     super.key,
     required this.onPressed,
-    this.color = AppColors.blackColor,
+    this.color,
     required this.buttonLabel,
     this.textColor,
     this.fontWeight = FontWeight.normal,
   });
 
   final VoidCallback onPressed;
-  final Color color;
+  final Color? color;
   final String buttonLabel;
   final Color? textColor;
   final FontWeight fontWeight;

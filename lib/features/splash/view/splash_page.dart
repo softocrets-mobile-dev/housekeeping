@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:housekeeping_pro/configuration/assets/app_images.dart';
+import 'package:housekeeping_pro/common/widgets/app_logo_view.dart';
 import 'package:housekeeping_pro/features/authenticaiton/view/login_page.dart';
 import 'package:housekeeping_pro/features/dashboard/view/dashboard_page.dart';
 import 'package:housekeeping_pro/storage/local_storage.dart';
@@ -40,16 +40,7 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Container(
-        alignment: Alignment.center,
-        margin: EdgeInsets.symmetric(horizontal: 20),
-        child: Image.asset(
-          AppImages.logo,
-          color: Colors.white,
-          colorBlendMode: BlendMode.color,
-        ),
-      ),
+      body: AppLogoView(),
     );
   }
 }
