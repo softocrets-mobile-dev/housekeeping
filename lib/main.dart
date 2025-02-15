@@ -25,16 +25,24 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserProfileCubit()..getUserProfileData(),
+          create: (context) => UserProfileCubit()
+            ..getUserProfileData()
+            ..getThemeMode(),
         ),
       ],
-      child: MaterialApp(
-        title: 'Housekeeping',
-        theme: AppTheme.darkThemeMode,
-        onGenerateRoute: NavigationRoutes.onGenerateRoute,
-        home: SplashPage(),
-        builder: (context, child) {
-          return child!;
+      child: BlocBuilder<UserProfileCubit, UserProfileState>(
+        builder: (context, state) {
+          return MaterialApp(
+            title: 'Housekeeping',
+            theme: state.appTheme == 0
+                ? AppTheme.darkThemeMode
+                : AppTheme.lightThemeMode,
+            onGenerateRoute: NavigationRoutes.onGenerateRoute,
+            home: SplashPage(),
+            builder: (context, child) {
+              return child!;
+            },
+          );
         },
       ),
     );

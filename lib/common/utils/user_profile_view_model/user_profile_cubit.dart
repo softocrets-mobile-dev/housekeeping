@@ -24,4 +24,21 @@ class UserProfileCubit extends Cubit<UserProfileState> {
       userRole: result[3],
     ));
   }
+
+  Future<void> updateAppTheme({
+    required int themeMode,
+  }) async {
+    await LocalStorage.getInstance().saveInt(
+      key: LocalStorageConstants.themeMode,
+      value: themeMode,
+    );
+    emit(state.copyWith(appTheme: themeMode));
+  }
+
+  Future<void> getThemeMode() async {
+    final themeMode = await LocalStorage.getInstance().getInt(
+      key: LocalStorageConstants.themeMode,
+    );
+    emit(state.copyWith(appTheme: themeMode));
+  }
 }
