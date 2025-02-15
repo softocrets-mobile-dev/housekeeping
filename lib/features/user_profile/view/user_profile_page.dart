@@ -11,6 +11,7 @@ import 'package:housekeeping_pro/configuration/assets/app_icons.dart';
 import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
 import 'package:housekeeping_pro/features/authenticaiton/view/login_page.dart';
 import 'package:housekeeping_pro/features/change_password/view/change_password_page.dart';
+import 'package:housekeeping_pro/storage/local_storage_constants.dart';
 
 import '../../../storage/local_storage.dart';
 
@@ -38,9 +39,7 @@ class _UserProfilePageState extends State<UserProfilePage> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          backgroundColor: AppColors.whiteColor,
           appBar: AppBar(
-            backgroundColor: AppColors.whiteColor,
             centerTitle: true,
             title: const TextWidget(text: " Profile"),
           ),
@@ -119,9 +118,17 @@ class _UserProfilePageState extends State<UserProfilePage> {
                         return LogoutView();
                       },
                     ).then((v) async {
+                      final isRememberMe = await LocalStorage.getInstance()
+                          .getBool(key: LocalStorageConstants.isRememberMe);
                       if (v == null || !v) return;
                       try {
-                        await LocalStorage.getInstance().clearAll();
+                        if (!isRememberMe) {
+                          await LocalStorage.getInstance().clearAll();
+                        }
+                        if (isRememberMe) {
+                          await LocalStorage.getInstance()
+                              .clearIsRememberData();
+                        }
                         if (context.mounted) {
                           Navigator.of(context).pushNamedAndRemoveUntil(
                               LoginPage.route, (route) => false);
