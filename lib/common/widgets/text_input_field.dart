@@ -23,6 +23,7 @@ class TextInputField extends StatefulWidget {
     this.maxLength,
     this.maxLines = 1,
     this.showCounterText = false,
+    this.suffixIcon,
   });
 
   final TextEditingController? controller;
@@ -43,6 +44,7 @@ class TextInputField extends StatefulWidget {
   final VoidCallback? onTap;
   final int maxLines;
   final bool showCounterText;
+  final IconData? suffixIcon;
 
   @override
   State<TextInputField> createState() => _CustomTextFieldState();
@@ -100,7 +102,9 @@ class _CustomTextFieldState extends State<TextInputField> {
                       });
                     },
                   )
-                : null,
+                : widget.suffixIcon != null
+                    ? Icon(widget.suffixIcon)
+                    : null,
           ),
         ),
       ),
