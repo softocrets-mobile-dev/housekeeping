@@ -9,6 +9,7 @@ import 'package:housekeeping_pro/storage/local_storage.dart';
 import 'package:housekeeping_pro/storage/local_storage_constants.dart';
 
 part 'authentication_event.dart';
+
 part 'authentication_state.dart';
 
 class AuthenticationBloc
@@ -18,6 +19,7 @@ class AuthenticationBloc
   AuthenticationBloc() : super(AuthenticationState()) {
     on<LoginEvent>(_onLoginEvent);
     on<SaveUserDataEvent>(_onSaveUserDataEvent);
+    on<UpdateRememberMeStatus>(_onUpdateRememberMeStatus);
   }
 
   Future<void> _onLoginEvent(
@@ -60,6 +62,10 @@ class AuthenticationBloc
   ) async {
     final localStorage = LocalStorage.getInstance();
 
+    //Save isRememberMe if checkbox is checked while login
+    localStorage.saveBoolean(
+        key: LocalStorageConstants.isRememberMe, value: state.isRememberMe);
+
     //save login status
     localStorage.saveBoolean(
         key: LocalStorageConstants.isUserLoggedIn, value: true);
@@ -96,6 +102,15 @@ class AuthenticationBloc
 
     emit(state.copyWith(
       loginStatus: AuthStatus.success,
+    ));
+  }
+
+  Future<void> _onUpdateRememberMeStatus(
+    UpdateRememberMeStatus event,
+    Emitter<AuthenticationState> emit,
+  ) async {
+    emit(state.copyWith(
+      isRememberMe: !state.isRememberMe,
     ));
   }
 }

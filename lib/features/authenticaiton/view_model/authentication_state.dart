@@ -5,9 +5,12 @@ final class AuthenticationState extends Equatable {
   final AuthStatus encryptStatus;
   final String message;
 
+  final bool isRememberMe;
+
   const AuthenticationState({
     this.loginStatus = AuthStatus.initial,
     this.encryptStatus = AuthStatus.initial,
+    this.isRememberMe = false,
     this.message = '',
   });
 
@@ -15,11 +18,13 @@ final class AuthenticationState extends Equatable {
     AuthStatus? loginStatus,
     String? message,
     AuthStatus? encryptStatus,
+    bool? isRememberMe,
   }) {
     return AuthenticationState(
       loginStatus: loginStatus ?? this.loginStatus,
       message: message ?? this.message,
       encryptStatus: encryptStatus ?? this.encryptStatus,
+      isRememberMe: isRememberMe ?? this.isRememberMe,
     );
   }
 
@@ -28,6 +33,7 @@ final class AuthenticationState extends Equatable {
         loginStatus,
         message,
         encryptStatus,
+        isRememberMe,
       ];
 }
 

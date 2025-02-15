@@ -60,21 +60,9 @@ class SaveUserDataEvent extends AuthenticationEvent {
       ];
 }
 
-class EncryptSecurePasswordEvent extends AuthenticationEvent {
-  final String password;
-  final String email;
-  final String hotelName;
-
-  const EncryptSecurePasswordEvent({
-    required this.password,
-    required this.email,
-    required this.hotelName,
-  });
+class UpdateRememberMeStatus extends AuthenticationEvent {
+  const UpdateRememberMeStatus();
 
   @override
-  List<Object> get props => [
-        password,
-        email,
-        hotelName,
-      ];
+  List<Object> get props => [];
 }
