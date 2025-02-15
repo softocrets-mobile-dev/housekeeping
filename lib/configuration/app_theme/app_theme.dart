@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:housekeeping_pro/configuration/app_colors/app_colors.dart';
+import 'package:housekeeping_pro/configuration/app_theme/extension/image_theme_data_extension.dart';
 
 class AppTheme {
   static _border([
@@ -107,6 +108,100 @@ class AppTheme {
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.whiteColor,
+        foregroundColor: AppColors.blackColor,
+        minimumSize: Size(double.infinity, 50),
+        textStyle: TextStyle(
+          fontSize: 16,
+          color: AppColors.blackColor,
+          fontWeight: FontWeight.normal,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+    ),
+    extensions: [
+      ImageThemeDataExtension(
+        color: AppColors.whiteColor,
+      ),
+    ],
+  );
+
+  static final lightThemeMode = ThemeData.light().copyWith(
+    brightness: Brightness.light,
+    scaffoldBackgroundColor: AppColors.whiteColor,
+    appBarTheme: AppBarTheme(
+      backgroundColor: AppColors.whiteColor,
+      elevation: 0,
+      iconTheme: IconThemeData(
+        color: AppColors.blackColor,
+        size: 24,
+      ),
+      titleTextStyle: TextStyle(
+        color: AppColors.blackColor,
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+      ),
+    ),
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.whiteColor,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      contentPadding: EdgeInsets.symmetric(horizontal: 15, vertical: 13),
+      fillColor: AppColors.textFieldBgColor,
+      filled: true,
+      labelStyle: TextStyle(
+        color: AppColors.blackColor,
+        fontSize: 16,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(
+          8,
+        ),
+        borderSide: BorderSide.none,
+      ),
+      suffixIconColor: AppColors.blackColor,
+      hintStyle: TextStyle(
+        color: AppColors.greyColor,
+        fontSize: 16,
+      ),
+      errorStyle: TextStyle(
+        color: AppColors.redColor,
+        fontSize: 16,
+      ),
+      helperStyle: TextStyle(
+        color: AppColors.blackColor,
+        fontSize: 16,
+      ),
+    ),
+    iconTheme: IconThemeData(
+      color: AppColors.blackColor,
+      size: 24,
+    ),
+    dialogTheme: DialogTheme(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+      backgroundColor: AppColors.whiteColor,
+      titleTextStyle: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: AppColors.blackColor,
+      ),
+      contentTextStyle: TextStyle(
+        fontSize: 12,
+        fontWeight: FontWeight.bold,
+        color: AppColors.blackColor,
+      ),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.blackColor,
+      linearMinHeight: 10,
+    ),
+    //5F60B9
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.lightButtonColor,
         foregroundColor: AppColors.whiteColor,
         minimumSize: Size(double.infinity, 50),
         textStyle: TextStyle(
@@ -119,6 +214,28 @@ class AppTheme {
         ),
       ),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        textStyle: TextStyle(
+          fontSize: 16,
+          color: AppColors.blackColor,
+          fontWeight: FontWeight.normal,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+    ),
+    textTheme: lightTheme(),
+    checkboxTheme: CheckboxThemeData(
+      fillColor: WidgetStateProperty.all(AppColors.blackColor),
+      checkColor: WidgetStateProperty.all(AppColors.whiteColor),
+    ),
+    extensions: [
+      ImageThemeDataExtension(
+        color: AppColors.blackColor,
+      ),
+    ],
   );
 }
 
