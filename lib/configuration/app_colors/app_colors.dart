@@ -14,6 +14,6 @@ class AppColors {
   static const Color borderColor = Color.fromRGBO(52, 51, 67, 1);
   static const Color transparentColor = Color(0x00000000);
   static const Color greyColor = Color(0xFF9E9E9E);
-
   static const Color textFieldBgColor = Color(0xFFEBEBEB);
+  static const Color lightButtonColor = Color(0xFF5F60B9);
 }

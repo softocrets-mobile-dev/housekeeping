@@ -19,4 +19,5 @@ class LocalStorageConstants {
   static const String userName = "USER_NAME";
   static const String userId = "USER_ID";
   static const String isRememberMe = "IS_REMEMBER_ME";
+  static const String themeMode = "THEME_MODE";
 }
