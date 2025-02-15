@@ -34,9 +34,13 @@ class MyApp extends StatelessWidget {
         builder: (context, state) {
           return MaterialApp(
             title: 'Housekeeping',
-            theme: state.appTheme == 0
-                ? AppTheme.darkThemeMode
-                : AppTheme.lightThemeMode,
+            theme: state.appTheme == 2
+                ? AppTheme.lightThemeMode
+                : state.appTheme == 0
+                    ? AppTheme.darkThemeMode
+                    : AppTheme.lightThemeMode,
+            darkTheme: state.appTheme == 2 ? AppTheme.darkThemeMode : null,
+            themeMode: state.appTheme == 2 ? ThemeMode.system : null,
             onGenerateRoute: NavigationRoutes.onGenerateRoute,
             home: SplashPage(),
             builder: (context, child) {

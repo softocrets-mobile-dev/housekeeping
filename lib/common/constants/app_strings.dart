@@ -24,6 +24,7 @@ class AppStrings {
   static const String passwordHint = "Password hint";
   static const String rememberMe = "Remember Me";
   static const String appTheme = "App Theme";
-  static const String lightTheme = "Light Theme";
-  static const String darkTheme = "Dark Theme";
+  static const String lightTheme = "Light Mode";
+  static const String darkTheme = "Dark Mode";
+  static const String systemTheme = "System Mode";
 }

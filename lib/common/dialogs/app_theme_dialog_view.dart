@@ -95,6 +95,21 @@ class _AppThemeDialogViewState extends State<AppThemeDialogView> {
               text: AppStrings.lightTheme,
             ),
           ),
+          RadioListTile(
+            value: 2,
+            groupValue: intThemeMode,
+            selected: widget.themeMode == 2,
+            onChanged: (v) {
+              context.read<UserProfileCubit>().updateAppTheme(themeMode: 2);
+              setState(() {
+                intThemeMode = 2;
+              });
+            },
+            toggleable: true,
+            title: TextWidget(
+              text: AppStrings.systemTheme,
+            ),
+          ),
         ],
       ),
     );
