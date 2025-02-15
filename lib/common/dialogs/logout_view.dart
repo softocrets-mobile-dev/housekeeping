@@ -34,18 +34,19 @@ class LogoutView extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                TextButton(
-                    style: TextButton.styleFrom(
-                      foregroundColor: Colors.black,
-                    ),
-                    onPressed: () {
-                      Navigator.of(context).pop(false);
-                    },
+                InkWell(
+                  borderRadius: BorderRadius.circular(5.r),
+                  onTap: () {
+                    Navigator.of(context).pop(false);
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20.0, vertical: 10),
                     child: TextWidget(
                       text: AppStrings.cancel,
-                    )),
-                SizedBox(
-                  width: 10.w,
+                      fontSize: 16.sp,
+                    ),
+                  ),
                 ),
                 ConstrainedBox(
                   constraints: BoxConstraints.tightFor(width: 100.w),

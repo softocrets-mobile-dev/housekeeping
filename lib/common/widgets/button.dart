@@ -9,14 +9,14 @@ class Button extends StatelessWidget {
     required this.onPressed,
     this.color = AppColors.blackColor,
     required this.buttonLabel,
-    this.textColor = AppColors.whiteColor,
+    this.textColor,
     this.fontWeight = FontWeight.normal,
   });
 
   final VoidCallback onPressed;
   final Color color;
   final String buttonLabel;
-  final Color textColor;
+  final Color? textColor;
   final FontWeight fontWeight;
 
   @override

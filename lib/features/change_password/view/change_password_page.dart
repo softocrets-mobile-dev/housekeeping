@@ -7,7 +7,6 @@ import 'package:housekeeping_pro/common/widgets/button.dart';
 import 'package:housekeeping_pro/common/widgets/state_loader_view.dart';
 import 'package:housekeeping_pro/common/widgets/text_input_field.dart';
 import 'package:housekeeping_pro/common/widgets/text_widget.dart';
-import 'package:housekeeping_pro/configuration/app_colors/app_colors.dart';
 import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
 import 'package:housekeeping_pro/features/change_password/view/widgets/password_hint_view.dart';
 import 'package:housekeeping_pro/features/change_password/view_model/change_password_bloc.dart';
@@ -30,9 +29,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.whiteColor,
       appBar: AppBar(
-        backgroundColor: AppColors.whiteColor,
         title: TextWidget(
           text: AppStrings.changePassword,
         ),
