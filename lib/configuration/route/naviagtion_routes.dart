@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:housekeeping_pro/features/authenticaiton/view/login_page.dart';
+import 'package:housekeeping_pro/features/authenticaiton/view_model/authentication_bloc.dart';
 import 'package:housekeeping_pro/features/change_password/view/change_password_page.dart';
 import 'package:housekeeping_pro/features/change_password/view_model/change_password_bloc.dart';
 import 'package:housekeeping_pro/features/dashboard/view/dashboard_page.dart';
@@ -20,7 +21,10 @@ class NavigationRoutes {
     switch (settings.name) {
       case LoginPage.route:
         return MaterialPageRoute(
-          builder: (_) => LoginPage(),
+          builder: (_) => BlocProvider(
+            create: (context) => AuthenticationBloc(),
+            child: LoginPage(),
+          ),
         );
       case ChangePasswordPage.route:
         return MaterialPageRoute(

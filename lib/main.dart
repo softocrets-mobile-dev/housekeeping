@@ -4,7 +4,6 @@ import 'package:housekeeping_pro/common/utils/user_profile_view_model/user_profi
 import 'package:housekeeping_pro/configuration/app_theme/app_theme.dart';
 import 'package:housekeeping_pro/configuration/route/naviagtion_routes.dart';
 import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
-import 'package:housekeeping_pro/features/authenticaiton/view_model/authentication_bloc.dart';
 import 'package:housekeeping_pro/features/splash/view/splash_page.dart';
 
 void main() {
@@ -28,7 +27,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => UserProfileCubit()..getUserProfileData(),
         ),
-        BlocProvider(create: (context) => AuthenticationBloc()),
       ],
       child: MaterialApp(
         title: 'Housekeeping',
