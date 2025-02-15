@@ -78,4 +78,19 @@ class LocalStorage {
       preference.clear();
     });
   }
+
+  //If isRememberMe is true then delete all data except isRememberMe and userEmail, hotelName
+  Future<void> clearIsRememberData() async {
+    return _sharedPreference!.then((preference) async {
+      await Future.wait([
+        preference.remove(LocalStorageConstants.authToken),
+        preference.remove(LocalStorageConstants.tenantId),
+        preference.remove(LocalStorageConstants.userProfile),
+        preference.remove(LocalStorageConstants.role),
+        preference.remove(LocalStorageConstants.userName),
+        preference.remove(LocalStorageConstants.userId),
+        preference.remove(LocalStorageConstants.isUserLoggedIn),
+      ]);
+    });
+  }
 }
