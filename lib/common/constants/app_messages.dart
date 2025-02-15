@@ -43,4 +43,7 @@ class AppMessages {
 
   static const String passwordChangedSuccessfully =
       "Password changed successfully.";
+
+  static const String loginScreenMessage =
+      "Welcome Back, you have been missed for long Time";
 }

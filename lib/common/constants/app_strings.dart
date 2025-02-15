@@ -22,4 +22,5 @@ class AppStrings {
   static const String newPassword = "New Password";
   static const String confirmPassword = "Confirm Password";
   static const String passwordHint = "Password hint";
+  static const String rememberMe = "Remember Me";
 }
