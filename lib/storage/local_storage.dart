@@ -42,6 +42,15 @@ class LocalStorage {
     });
   }
 
+  ///Get List<String> value
+  Future<List<String>> getStringList({
+    required String key,
+  }) async {
+    return _sharedPreference!.then((preference) {
+      return preference.getStringList(key) ?? [];
+    });
+  }
+
   /// Save String Value
   Future<void> saveString({
     required String key,
@@ -69,6 +78,16 @@ class LocalStorage {
   }) async {
     return _sharedPreference!.then((preference) {
       preference.setInt(key, value);
+    });
+  }
+
+  //Save List<String> Value
+  Future<void> saveStringList({
+    required String key,
+    List<String> value = const [],
+  }) async {
+    return _sharedPreference!.then((preference) {
+      preference.setStringList(key, value);
     });
   }
 
