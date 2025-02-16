@@ -11,7 +11,7 @@ import 'package:housekeeping_pro/common/widgets/text_input_field.dart';
 import 'package:housekeeping_pro/common/widgets/text_widget.dart';
 import 'package:housekeeping_pro/configuration/size_config/size_config.dart';
 import 'package:housekeeping_pro/features/authenticaiton/view_model/authentication_bloc.dart';
-import 'package:housekeeping_pro/features/dashboard/view/dashboard_page.dart';
+import 'package:housekeeping_pro/home/view/home_page.dart';
 import 'package:housekeeping_pro/storage/local_storage.dart';
 import 'package:housekeeping_pro/storage/local_storage_constants.dart';
 
@@ -63,7 +63,11 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) {
           if (state.loginStatus == AuthStatus.success) {
             Navigator.pushNamedAndRemoveUntil(
-                context, DashboardPage.route, (predicate) => false);
+              context,
+              HomePage.route,
+              (predicate) => false,
+              arguments: true,
+            );
             return;
           }
           if (state.loginStatus == AuthStatus.error) {

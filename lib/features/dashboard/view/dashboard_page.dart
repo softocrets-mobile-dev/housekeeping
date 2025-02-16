@@ -21,31 +21,31 @@ class _DashboardPageState extends State<DashboardPage> {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-            drawerEnableOpenDragGesture: true,
-            appBar: AppBar(
-              title: const Text("Dashboard"),
-              actions: [
-                IconButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, UserProfilePage.route);
-                  },
-                  icon: Container(
-                    padding: EdgeInsets.all(5.r),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        50.r,
-                      ),
-                      border: Border.all(
-                        color: AppColors.greyColor,
-                      ),
+          drawerEnableOpenDragGesture: true,
+          appBar: AppBar(
+            title: const Text("Dashboard"),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, UserProfilePage.route);
+                },
+                icon: Container(
+                  padding: EdgeInsets.all(5.r),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(
+                      50.r,
                     ),
-                    child: Icon(Icons.person),
+                    border: Border.all(
+                      color: AppColors.greyColor,
+                    ),
                   ),
-                )
-              ],
-            ),
-            //Currently drawer is consider for future use
-            /* drawer: SafeArea(
+                  child: Icon(Icons.person),
+                ),
+              )
+            ],
+          ),
+          //Currently drawer is consider for future use
+          /* drawer: SafeArea(
             child: DashboardDrawer(
               selectedIndex: state.dashboardTabIndex,
               onItemTap: (value) {
@@ -62,15 +62,16 @@ class _DashboardPageState extends State<DashboardPage> {
             ),
           ),*/
 
-            body: Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 15.w,
-              ),
-              width: double.infinity,
-              child: Column(
-                children: [],
-              ),
-            ));
+          body: Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 15.w,
+            ),
+            width: double.infinity,
+            child: Column(
+              children: [],
+            ),
+          ),
+        );
       },
     );
   }

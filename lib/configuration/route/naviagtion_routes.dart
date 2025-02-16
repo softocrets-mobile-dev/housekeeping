@@ -7,6 +7,8 @@ import 'package:housekeeping_pro/features/change_password/view_model/change_pass
 import 'package:housekeeping_pro/features/dashboard/view/dashboard_page.dart';
 import 'package:housekeeping_pro/features/dashboard/view_model/dashboard_bloc.dart';
 import 'package:housekeeping_pro/features/user_profile/view/user_profile_page.dart';
+import 'package:housekeeping_pro/home/view/home_page.dart';
+import 'package:housekeeping_pro/home/view_model/home_bloc.dart';
 
 class NavigationRoutes {
   factory NavigationRoutes() => _instance;
@@ -36,6 +38,16 @@ class NavigationRoutes {
       case UserProfilePage.route:
         return MaterialPageRoute(
           builder: (_) => UserProfilePage(),
+        );
+      case HomePage.route:
+        final args = settings.arguments as bool;
+        return MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (context) => HomeBloc(),
+            child: HomePage(
+              isUserFirstTime: args,
+            ),
+          ),
         );
       case DashboardPage.route:
         return MaterialPageRoute(
